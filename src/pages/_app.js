@@ -1,5 +1,14 @@
-import '@/styles/globals.css'
+import "@/styles/globals.css";
+import {SWRConfig} from "swr";
 
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+export default function App({Component, pageProps}) {
+  return (
+    <SWRConfig
+      value={{
+        fetcher: (resource, init) => fetch(resource, init).then((res) => res.json()),
+      }}
+    >
+      <Component {...pageProps} />
+    </SWRConfig>
+  );
 }
