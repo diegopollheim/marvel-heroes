@@ -8,9 +8,8 @@ function generateHash(timestamp, privateKey, publicKey) {
   return hash;
 }
 
-export default async function heroes(req, res) {
-  console.log('CHEGUEI NA API.......')
-  const baseUrl = "https://gateway.marvel.com/v1/public/characters";
+export default async function heroe(req, res) {
+  const baseUrl = `https://gateway.marvel.com/v1/public/characters/${req.query.id}`;
   const timestamp = new Date().getTime().toString();
   const hash = generateHash(timestamp, privateKey, publicKey);
 
@@ -24,10 +23,10 @@ export default async function heroes(req, res) {
   url.search = new URLSearchParams(params).toString();
 
   try {
+    console.log('buscando hertoi')
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
-    res.json(data.data.results);
+    res.json(data.data.results[0]);
   } catch (error) {
     console.error("Erro na chamada da API:", error);
     res.status(500).send(error.message);
