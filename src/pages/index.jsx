@@ -1,9 +1,9 @@
 import CardHeroe from "@/components/CardHeroe";
 import { useAppContext } from "@/contexts/AppProvider";
-import {Stack, Typography} from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 
 export default function Home() {
- const {heroisTabela} = useAppContext()
+  const { heroisTabela } = useAppContext();
 
   let width = 300;
   return (
@@ -16,11 +16,15 @@ export default function Home() {
         gap: 3,
       }}
     >
-      {heroisTabela.length && heroisTabela?.map((hero) => (
+      {/* {heroisTabela.length && heroisTabela?.map((hero) => (
         <CardHeroe key={hero.id}  heroi={hero} />
-      ))}
+      ))} */}
 
-      {!heroisTabela.length && <Typography>Nenhum resultado!</Typography>}
+      {!!heroisTabela.length && (
+        <Box>
+          <Typography>Nenhum resultado!</Typography>
+        </Box>
+      )}
     </Stack>
   );
 }

@@ -4,11 +4,14 @@ import { BsGithub, BsInstagram, BsLinkedin } from "react-icons/bs";
 export default function () {
   return (
     <Stack
+      position="fixed"
+      bottom={0}
+      width='100%'
       alignItems="center"
-      paddingY={3}
+      paddingY={2}
       bgcolor="#121214"
       mt={10}
-      spacing={2}
+      spacing={1}
     >
       <Stack direction="row" spacing={4}>
         <Link href={"https://github.com/diegopollheim"} target="_blank">
