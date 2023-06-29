@@ -15,7 +15,7 @@ export default function AppProvider({ children }) {
       setHeroisTabela(dados);
     };
 
-    return fetchData;
+    fetchData();
   }, []);
 
   const searchHeroe = (query) => {
