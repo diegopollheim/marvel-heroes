@@ -4,10 +4,8 @@ import useSWR from "swr";
 const AppContext = createContext({});
 
 export default function AppProvider({ children }) {
-  const { data } = useSWR("api/marvel/heroe");
   const [allHerois, setAllHerois] = useState([]);
   const [heroisTabela, setHeroisTabela] = useState([]);
-  console.log("ABC", data);
 
   useEffect(() => {
     const fetchData = async () => {
