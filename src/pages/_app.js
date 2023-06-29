@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import { SWRConfig } from "swr";
 import { Container } from "@mui/material";
 import AppProvider from "@/contexts/AppProvider";
+import Footer from "@/components/Footer";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -18,6 +19,7 @@ export default function App({ Component, pageProps }) {
           <Component {...pageProps} />
         </SWRConfig>
       </Container>
+      <Footer />
     </AppProvider>
   );
 }
