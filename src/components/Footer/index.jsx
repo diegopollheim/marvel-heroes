@@ -28,7 +28,7 @@ export default function () {
         </Link>
       </Stack>
       <Typography variant="caption" color="white">
-        Develop by Diego Pollheim
+        Developed by Diego Pollheim
       </Typography>
     </Stack>
   );
