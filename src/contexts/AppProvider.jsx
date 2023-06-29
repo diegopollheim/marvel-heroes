@@ -9,7 +9,7 @@ export default function AppProvider({ children }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("api/marvel/heroe");
+      const response = await fetch("/api/marvel/heroe");
       const dados = await response.json();
       setAllHerois(dados);
       setHeroisTabela(dados);
