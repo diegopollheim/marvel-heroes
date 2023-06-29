@@ -16,11 +16,11 @@ export default function Home() {
         gap: 3,
       }}
     >
-      {/* {heroisTabela.length && heroisTabela?.map((hero) => (
+      {heroisTabela.length && heroisTabela?.map((hero) => (
         <CardHeroe key={hero.id}  heroi={hero} />
-      ))} */}
+      ))}
 
-      {!!heroisTabela.length && (
+      {!heroisTabela.length && (
         <Box>
           <Typography>Nenhum resultado!</Typography>
         </Box>
