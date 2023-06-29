@@ -1,10 +1,10 @@
 import CardHeroe from "@/components/CardHeroe";
 import { useAppContext } from "@/contexts/AppProvider";
-import {Stack} from "@mui/material";
-import useSWR from "swr";
+import {Stack, Typography} from "@mui/material";
 
 export default function Home() {
  const {heroisTabela} = useAppContext()
+ console.log(heroisTabela)
   let width = 300;
   return (
     <Stack
@@ -16,9 +16,11 @@ export default function Home() {
         gap: 3,
       }}
     >
-      {heroisTabela?.map((hero) => (
+      {heroisTabela.length && heroisTabela?.map((hero) => (
         <CardHeroe heroi={hero} />
       ))}
+
+      {!heroisTabela.length && <Typography>Nenhum resultado!</Typography>}
     </Stack>
   );
 }

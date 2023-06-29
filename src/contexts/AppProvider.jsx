@@ -1,14 +1,43 @@
-import {useContext, createContext, useState} from "react";
-import swr from "swr";
+import { useContext, createContext, useState, useEffect } from "react";
+import useSWR from "swr";
 
 const AppContext = createContext({});
 
-export default function AppProvider({children}) {
-  const {data: heroes} = useSWR("/api/marvel/heroe");
+export default function AppProvider({ children }) {
+  const { data } = useSWR("api/marvel/heroe");
+  const [allHerois, setAllHerois] = useState([]);
+  const [heroisTabela, setHeroisTabela] = useState([]);
+  console.log("ABC", data);
 
-  const [heroisTabela, setHeroisTabela] = useState(heroes);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("api/marvel/heroe");
+      const dados = await response.json();
+      setAllHerois(dados);
+      setHeroisTabela(dados);
+    };
 
-  return <AppContext.Provider value={{heroisTabela}}>{children}</AppContext.Provider>;
+    return fetchData;
+  }, []);
+
+  const searchHeroe = (query) => {
+    if (!query) {
+      setHeroisTabela(allHerois);
+      return;
+    }
+
+    const newList = allHerois.filter((hr) =>
+      hr.name.toLowerCase().includes(query.toLowerCase())
+    );
+
+    setHeroisTabela(newList);
+  };
+
+  return (
+    <AppContext.Provider value={{ heroisTabela, searchHeroe }}>
+      {children}
+    </AppContext.Provider>
+  );
 }
 
 export const useAppContext = () => useContext(AppContext);
