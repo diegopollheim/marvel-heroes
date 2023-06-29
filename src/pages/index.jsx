@@ -4,7 +4,7 @@ import {Stack, Typography} from "@mui/material";
 
 export default function Home() {
  const {heroisTabela} = useAppContext()
- console.log(heroisTabela)
+
   let width = 300;
   return (
     <Stack
@@ -17,7 +17,7 @@ export default function Home() {
       }}
     >
       {heroisTabela.length && heroisTabela?.map((hero) => (
-        <CardHeroe heroi={hero} />
+        <CardHeroe key={hero.id}  heroi={hero} />
       ))}
 
       {!heroisTabela.length && <Typography>Nenhum resultado!</Typography>}
